@@ -28,22 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnExit = new System.Windows.Forms.Button();
+            this.btnRentals = new System.Windows.Forms.Button();
             this.btnMovies = new System.Windows.Forms.Button();
             this.btnCustomers = new System.Windows.Forms.Button();
-            this.btnRentals = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // btnExit
+            // btnRentals
             // 
-            this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(1101, 608);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(187, 80);
-            this.btnExit.TabIndex = 7;
-            this.btnExit.Text = "Exit";
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            this.btnRentals.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRentals.Location = new System.Drawing.Point(1101, 350);
+            this.btnRentals.Name = "btnRentals";
+            this.btnRentals.Size = new System.Drawing.Size(187, 80);
+            this.btnRentals.TabIndex = 4;
+            this.btnRentals.Text = "Rentals";
+            this.btnRentals.UseVisualStyleBackColor = true;
             // 
             // btnMovies
             // 
@@ -65,15 +64,16 @@
             this.btnCustomers.Text = "Customers";
             this.btnCustomers.UseVisualStyleBackColor = true;
             // 
-            // btnRentals
+            // btnExit
             // 
-            this.btnRentals.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRentals.Location = new System.Drawing.Point(1101, 350);
-            this.btnRentals.Name = "btnRentals";
-            this.btnRentals.Size = new System.Drawing.Size(187, 80);
-            this.btnRentals.TabIndex = 4;
-            this.btnRentals.Text = "Rentals";
-            this.btnRentals.UseVisualStyleBackColor = true;
+            this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.Location = new System.Drawing.Point(1101, 608);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(187, 80);
+            this.btnExit.TabIndex = 7;
+            this.btnExit.Text = "Exit";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // FormMain
             // 
@@ -92,9 +92,9 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.Button btnRentals;
         private System.Windows.Forms.Button btnMovies;
         private System.Windows.Forms.Button btnCustomers;
-        private System.Windows.Forms.Button btnRentals;
+        private System.Windows.Forms.Button btnExit;
     }
 }
