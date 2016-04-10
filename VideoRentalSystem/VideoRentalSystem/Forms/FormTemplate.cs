@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace VideoRentalSystem.Forms
+namespace VideoRentalSystem
 {
-    public partial class FormMainMenu : VideoRentalSystem.FormTemplate
+    public partial class FormTemplate : Form
     {
-        public FormMainMenu()
+        public FormTemplate()
         {
             InitializeComponent();
         }
