@@ -8,9 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace VideoRentalSystem
+namespace VideoRentalSystem.Forms
 {
-    public partial class FormMain : Form
+    public partial class FormMain : FormTemplate
     {
         public FormMain()
         {
