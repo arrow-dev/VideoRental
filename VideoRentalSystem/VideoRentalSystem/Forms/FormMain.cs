@@ -21,5 +21,12 @@ namespace VideoRentalSystem.Forms
         {
             Application.Exit();
         }
+
+        //Start button is a placeholder for a future login process
+        private void btnStart_Click(object sender, EventArgs e)
+        {
+            var DataView = new FormDataView();
+            DataView.Show();
+        }
     }
 }
