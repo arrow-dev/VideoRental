@@ -52,11 +52,29 @@
   <ItemGroup>
     <Compile Include="Class\Data.cs" />
     <Compile Include="Class\Movie.cs" />
+    <Compile Include="Forms\FormAddCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormAddCustomer.designer.cs">
+      <DependentUpon>FormAddCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormAddMovie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormAddMovie.designer.cs">
+      <DependentUpon>FormAddMovie.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormDataView.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FormDataView.Designer.cs">
       <DependentUpon>FormDataView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormEditMovie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormEditMovie.designer.cs">
+      <DependentUpon>FormEditMovie.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormMain.cs">
       <SubType>Form</SubType>
@@ -72,8 +90,17 @@
     </Compile>
     <Compile Include="Class\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\FormAddCustomer.resx">
+      <DependentUpon>FormAddCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormAddMovie.resx">
+      <DependentUpon>FormAddMovie.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormDataView.resx">
       <DependentUpon>FormDataView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormEditMovie.resx">
+      <DependentUpon>FormEditMovie.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>

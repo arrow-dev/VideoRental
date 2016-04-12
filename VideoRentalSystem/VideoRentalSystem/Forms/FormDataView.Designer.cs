@@ -30,22 +30,33 @@
         {
             this.tcDataDisplay = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.panelMovie = new System.Windows.Forms.Panel();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.lblPlot = new System.Windows.Forms.Label();
+            this.pbxPoster = new System.Windows.Forms.PictureBox();
             this.btnEditMovie = new System.Windows.Forms.Button();
             this.btnRemoveMovie = new System.Windows.Forms.Button();
             this.btnAddMovie = new System.Windows.Forms.Button();
             this.dgvMovies = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.btnEditUser = new System.Windows.Forms.Button();
-            this.btnRemoveUser = new System.Windows.Forms.Button();
-            this.btnAddUser = new System.Windows.Forms.Button();
+            this.btnEditCust = new System.Windows.Forms.Button();
+            this.btnRemoveCust = new System.Windows.Forms.Button();
+            this.btnAddCust = new System.Windows.Forms.Button();
             this.dgvUsers = new System.Windows.Forms.DataGridView();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.btnViewToggle = new System.Windows.Forms.Button();
             this.btnReturn = new System.Windows.Forms.Button();
             this.btnNewRental = new System.Windows.Forms.Button();
             this.dgvRentals = new System.Windows.Forms.DataGridView();
             this.btnBack = new System.Windows.Forms.Button();
             this.tcDataDisplay.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.panelMovie.SuspendLayout();
+            this.flowLayoutPanel2.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxPoster)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMovies)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
@@ -66,6 +77,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.panelMovie);
             this.tabPage1.Controls.Add(this.btnEditMovie);
             this.tabPage1.Controls.Add(this.btnRemoveMovie);
             this.tabPage1.Controls.Add(this.btnAddMovie);
@@ -78,6 +90,60 @@
             this.tabPage1.Text = "Movies";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // panelMovie
+            // 
+            this.panelMovie.Controls.Add(this.flowLayoutPanel2);
+            this.panelMovie.Controls.Add(this.flowLayoutPanel1);
+            this.panelMovie.Controls.Add(this.pbxPoster);
+            this.panelMovie.Location = new System.Drawing.Point(534, 6);
+            this.panelMovie.Name = "panelMovie";
+            this.panelMovie.Size = new System.Drawing.Size(535, 609);
+            this.panelMovie.TabIndex = 8;
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.Controls.Add(this.lblTitle);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(245, 3);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(287, 292);
+            this.flowLayoutPanel2.TabIndex = 5;
+            // 
+            // lblTitle
+            // 
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Location = new System.Drawing.Point(3, 0);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(0, 42);
+            this.lblTitle.TabIndex = 0;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.lblPlot);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(10, 302);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(509, 304);
+            this.flowLayoutPanel1.TabIndex = 4;
+            // 
+            // lblPlot
+            // 
+            this.lblPlot.AutoSize = true;
+            this.lblPlot.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPlot.Location = new System.Drawing.Point(3, 0);
+            this.lblPlot.Name = "lblPlot";
+            this.lblPlot.Size = new System.Drawing.Size(0, 31);
+            this.lblPlot.TabIndex = 0;
+            // 
+            // pbxPoster
+            // 
+            this.pbxPoster.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pbxPoster.Location = new System.Drawing.Point(10, 3);
+            this.pbxPoster.Name = "pbxPoster";
+            this.pbxPoster.Size = new System.Drawing.Size(229, 292);
+            this.pbxPoster.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxPoster.TabIndex = 1;
+            this.pbxPoster.TabStop = false;
+            // 
             // btnEditMovie
             // 
             this.btnEditMovie.Location = new System.Drawing.Point(354, 621);
@@ -86,6 +152,7 @@
             this.btnEditMovie.TabIndex = 7;
             this.btnEditMovie.Text = "Edit";
             this.btnEditMovie.UseVisualStyleBackColor = true;
+            this.btnEditMovie.Click += new System.EventHandler(this.btnEditMovie_Click);
             // 
             // btnRemoveMovie
             // 
@@ -95,6 +162,7 @@
             this.btnRemoveMovie.TabIndex = 6;
             this.btnRemoveMovie.Text = "Remove Movie";
             this.btnRemoveMovie.UseVisualStyleBackColor = true;
+            this.btnRemoveMovie.Click += new System.EventHandler(this.btnRemoveMovie_Click);
             // 
             // btnAddMovie
             // 
@@ -104,12 +172,14 @@
             this.btnAddMovie.TabIndex = 4;
             this.btnAddMovie.Text = "Add Movie";
             this.btnAddMovie.UseVisualStyleBackColor = true;
+            this.btnAddMovie.Click += new System.EventHandler(this.btnAddMovie_Click);
             // 
             // dgvMovies
             // 
             this.dgvMovies.AllowUserToAddRows = false;
             this.dgvMovies.AllowUserToDeleteRows = false;
             this.dgvMovies.AllowUserToResizeRows = false;
+            this.dgvMovies.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvMovies.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMovies.Location = new System.Drawing.Point(6, 6);
             this.dgvMovies.MultiSelect = false;
@@ -119,51 +189,54 @@
             this.dgvMovies.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMovies.Size = new System.Drawing.Size(522, 609);
             this.dgvMovies.TabIndex = 0;
+            this.dgvMovies.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMovies_CellContentClick);
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.btnEditUser);
-            this.tabPage2.Controls.Add(this.btnRemoveUser);
-            this.tabPage2.Controls.Add(this.btnAddUser);
+            this.tabPage2.Controls.Add(this.btnEditCust);
+            this.tabPage2.Controls.Add(this.btnRemoveCust);
+            this.tabPage2.Controls.Add(this.btnAddCust);
             this.tabPage2.Controls.Add(this.dgvUsers);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(1075, 650);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Users";
+            this.tabPage2.Text = "Customers";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // btnEditUser
+            // btnEditCust
             // 
-            this.btnEditUser.Location = new System.Drawing.Point(354, 621);
-            this.btnEditUser.Name = "btnEditUser";
-            this.btnEditUser.Size = new System.Drawing.Size(168, 23);
-            this.btnEditUser.TabIndex = 10;
-            this.btnEditUser.Text = "Edit";
-            this.btnEditUser.UseVisualStyleBackColor = true;
+            this.btnEditCust.Location = new System.Drawing.Point(354, 621);
+            this.btnEditCust.Name = "btnEditCust";
+            this.btnEditCust.Size = new System.Drawing.Size(168, 23);
+            this.btnEditCust.TabIndex = 10;
+            this.btnEditCust.Text = "Edit Customer";
+            this.btnEditCust.UseVisualStyleBackColor = true;
             // 
-            // btnRemoveUser
+            // btnRemoveCust
             // 
-            this.btnRemoveUser.Location = new System.Drawing.Point(180, 621);
-            this.btnRemoveUser.Name = "btnRemoveUser";
-            this.btnRemoveUser.Size = new System.Drawing.Size(168, 23);
-            this.btnRemoveUser.TabIndex = 9;
-            this.btnRemoveUser.Text = "Remove User";
-            this.btnRemoveUser.UseVisualStyleBackColor = true;
+            this.btnRemoveCust.Location = new System.Drawing.Point(180, 621);
+            this.btnRemoveCust.Name = "btnRemoveCust";
+            this.btnRemoveCust.Size = new System.Drawing.Size(168, 23);
+            this.btnRemoveCust.TabIndex = 9;
+            this.btnRemoveCust.Text = "Remove Customer";
+            this.btnRemoveCust.UseVisualStyleBackColor = true;
             // 
-            // btnAddUser
+            // btnAddCust
             // 
-            this.btnAddUser.Location = new System.Drawing.Point(6, 621);
-            this.btnAddUser.Name = "btnAddUser";
-            this.btnAddUser.Size = new System.Drawing.Size(168, 23);
-            this.btnAddUser.TabIndex = 8;
-            this.btnAddUser.Text = "Add User";
-            this.btnAddUser.UseVisualStyleBackColor = true;
+            this.btnAddCust.Location = new System.Drawing.Point(6, 621);
+            this.btnAddCust.Name = "btnAddCust";
+            this.btnAddCust.Size = new System.Drawing.Size(168, 23);
+            this.btnAddCust.TabIndex = 8;
+            this.btnAddCust.Text = "Add Customer";
+            this.btnAddCust.UseVisualStyleBackColor = true;
+            this.btnAddCust.Click += new System.EventHandler(this.btnAddUser_Click);
             // 
             // dgvUsers
             // 
             this.dgvUsers.AllowUserToAddRows = false;
+            this.dgvUsers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvUsers.Location = new System.Drawing.Point(6, 6);
             this.dgvUsers.MultiSelect = false;
@@ -175,6 +248,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.btnViewToggle);
             this.tabPage3.Controls.Add(this.btnReturn);
             this.tabPage3.Controls.Add(this.btnNewRental);
             this.tabPage3.Controls.Add(this.dgvRentals);
@@ -185,6 +259,15 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Rentals";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // btnViewToggle
+            // 
+            this.btnViewToggle.Location = new System.Drawing.Point(354, 621);
+            this.btnViewToggle.Name = "btnViewToggle";
+            this.btnViewToggle.Size = new System.Drawing.Size(168, 23);
+            this.btnViewToggle.TabIndex = 10;
+            this.btnViewToggle.Text = "View Overdue Movies";
+            this.btnViewToggle.UseVisualStyleBackColor = true;
             // 
             // btnReturn
             // 
@@ -207,6 +290,7 @@
             // dgvRentals
             // 
             this.dgvRentals.AllowUserToAddRows = false;
+            this.dgvRentals.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvRentals.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvRentals.Location = new System.Drawing.Point(6, 6);
             this.dgvRentals.MultiSelect = false;
@@ -236,8 +320,15 @@
             this.Controls.Add(this.tcDataDisplay);
             this.Name = "FormDataView";
             this.Text = "FormDataView";
+            this.Load += new System.EventHandler(this.FormDataView_Load);
             this.tcDataDisplay.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.panelMovie.ResumeLayout(false);
+            this.flowLayoutPanel2.ResumeLayout(false);
+            this.flowLayoutPanel2.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxPoster)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMovies)).EndInit();
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).EndInit();
@@ -256,14 +347,21 @@
         private System.Windows.Forms.Button btnAddMovie;
         private System.Windows.Forms.DataGridView dgvMovies;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.Button btnEditUser;
-        private System.Windows.Forms.Button btnRemoveUser;
-        private System.Windows.Forms.Button btnAddUser;
+        private System.Windows.Forms.Button btnEditCust;
+        private System.Windows.Forms.Button btnRemoveCust;
+        private System.Windows.Forms.Button btnAddCust;
         private System.Windows.Forms.DataGridView dgvUsers;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Button btnReturn;
         private System.Windows.Forms.Button btnNewRental;
         private System.Windows.Forms.DataGridView dgvRentals;
         private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.Button btnViewToggle;
+        private System.Windows.Forms.Panel panelMovie;
+        private System.Windows.Forms.PictureBox pbxPoster;
+        private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.Label lblPlot;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }

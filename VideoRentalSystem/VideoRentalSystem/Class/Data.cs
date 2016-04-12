@@ -14,7 +14,7 @@ namespace VideoRentalSystem.Class
     {
         private SqlConnection Connection = new SqlConnection();
         private SqlCommand Command = new SqlCommand();
-        private SqlDataAdapter da = new SqlDataAdapter();
+        private SqlDataAdapter da;
         private String ConnectionString;
 
         public Data()
