@@ -65,6 +65,23 @@ namespace VideoRentalSystem.Class
             }
         }
 
+        public void AddCustomer(string p1, string p2, string p3, string p4)
+        {
+            using (SqlCommand cmd = Connection.CreateCommand())
+            {
+                cmd.CommandText = "AddCustomer";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@FirstName", p1);
+                cmd.Parameters.AddWithValue("@LastName", p2);
+                cmd.Parameters.AddWithValue("@Address", p3);
+                cmd.Parameters.AddWithValue("@Phone", p4);
+                Connection.Open();
+                cmd.ExecuteNonQuery();
+                Connection.Close();
+
+            }
+        }
+
         public void EditMovie(string p1, string p2, string p3, string p4, string p5, int ID)
         {
             using (SqlCommand cmd = Connection.CreateCommand())
@@ -115,13 +132,6 @@ namespace VideoRentalSystem.Class
             Connection.Open();
             Command.ExecuteNonQuery();
             Connection.Close();
-        }
-
-        public void AddRecord()
-        {
-            string AddMovie = "INSERT INTO MOVIES (Rating, Title, Year, Plot, Genre) VALUES (@Rating, @Title, @Year, @Plot, @Genre)";
-            string AddCustomer = "INSERT INTO Customer(CustID, FirstName, LastName, Address, Phone) VALUES(@CustID, @FirstName, @LastName, @Address, @Phone)";
-            string AddRental = "INSERT INTO RentedMovies (CustID, MovieID) VALUES(@CustID, @MovieID)";
         }
 
         public void addRental(int mID, int cID)

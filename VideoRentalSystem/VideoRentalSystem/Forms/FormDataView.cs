@@ -62,6 +62,7 @@ namespace VideoRentalSystem.Forms
         {
             Form addMovie = new FormAddMovie();
             addMovie.ShowDialog();
+            MessageBox.Show("Movie Added");
             LoadTables();
         }
 
@@ -93,9 +94,30 @@ namespace VideoRentalSystem.Forms
                     lN = addCust.lN;
                     address = addCust.address;
                     phone = addCust.phone;
+
+                    var myData = new Data();
+                    myData.AddCustomer(fN, lN, address, phone);
+                    MessageBox.Show("Customer Added");
+                    LoadTables();
                 }
             }
         }
+
+        private void btnRemoveCust_Click(object sender, EventArgs e)
+        {
+            var myData = new Data();
+            try
+            {
+                myData.DeleteRecord("Customer", Convert.ToInt32(dgvUsers.SelectedRows[0].Cells[0].Value));
+                MessageBox.Show("Customer Deleted");
+                LoadTables();
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
         private void updateDatabase()
         {
             var myData = new Data();

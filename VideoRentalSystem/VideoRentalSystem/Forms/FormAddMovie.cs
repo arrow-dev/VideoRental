@@ -23,7 +23,7 @@ namespace VideoStore
         {
             var myData = new Data();
             myData.AddMovie(txtTitle.Text, txtPlot.Text, dateTimePicker.Text,  cmbxRating.Text, cmbxGenre.Text);
-            MessageBox.Show("Movie Added");
+            this.DialogResult = DialogResult.OK;
         }
 
         private void button1_Click(object sender, EventArgs e)

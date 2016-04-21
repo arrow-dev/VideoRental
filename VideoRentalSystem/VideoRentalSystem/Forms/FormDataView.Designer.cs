@@ -222,6 +222,7 @@
             this.btnRemoveCust.TabIndex = 9;
             this.btnRemoveCust.Text = "Remove Customer";
             this.btnRemoveCust.UseVisualStyleBackColor = true;
+            this.btnRemoveCust.Click += new System.EventHandler(this.btnRemoveCust_Click);
             // 
             // btnAddCust
             // 
