@@ -213,6 +213,7 @@
             this.btnEditCust.TabIndex = 10;
             this.btnEditCust.Text = "Edit Customer";
             this.btnEditCust.UseVisualStyleBackColor = true;
+            this.btnEditCust.Click += new System.EventHandler(this.btnEditCust_Click);
             // 
             // btnRemoveCust
             // 
@@ -269,6 +270,7 @@
             this.btnViewToggle.TabIndex = 10;
             this.btnViewToggle.Text = "View Overdue Movies";
             this.btnViewToggle.UseVisualStyleBackColor = true;
+            this.btnViewToggle.Click += new System.EventHandler(this.btnViewToggle_Click);
             // 
             // btnReturn
             // 
@@ -278,6 +280,7 @@
             this.btnReturn.TabIndex = 9;
             this.btnReturn.Text = "Return Movie";
             this.btnReturn.UseVisualStyleBackColor = true;
+            this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click_1);
             // 
             // btnNewRental
             // 
@@ -287,6 +290,7 @@
             this.btnNewRental.TabIndex = 8;
             this.btnNewRental.Text = "New Rental";
             this.btnNewRental.UseVisualStyleBackColor = true;
+            this.btnNewRental.Click += new System.EventHandler(this.btnNewRental_Click);
             // 
             // dgvRentals
             // 

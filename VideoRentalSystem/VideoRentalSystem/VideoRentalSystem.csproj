@@ -70,6 +70,12 @@
     <Compile Include="Forms\FormDataView.Designer.cs">
       <DependentUpon>FormDataView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormEditCust.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormEditCust.Designer.cs">
+      <DependentUpon>FormEditCust.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormEditMovie.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +104,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormDataView.resx">
       <DependentUpon>FormDataView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormEditCust.resx">
+      <DependentUpon>FormEditCust.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormEditMovie.resx">
       <DependentUpon>FormEditMovie.cs</DependentUpon>

@@ -100,6 +100,23 @@ namespace VideoRentalSystem.Class
 
             }
         }
+        public void EditCust(string p1, string p2, string p3, string p4, int ID)
+        {
+            using (SqlCommand cmd = Connection.CreateCommand())
+            {
+                cmd.CommandText = "EditCustomer";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@FirstName", p1);
+                cmd.Parameters.AddWithValue("@LastName", p2);
+                cmd.Parameters.AddWithValue("@Address", p3);
+                cmd.Parameters.AddWithValue("@Phone", p4);
+                cmd.Parameters.AddWithValue("@ID", ID);
+                Connection.Open();
+                cmd.ExecuteNonQuery();
+                Connection.Close();
+
+            }
+        }
 
         public void DeleteRecord(string table, int index)
         {

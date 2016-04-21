@@ -41,12 +41,12 @@ namespace VideoStore
                 }
                 catch (Exception)
                 {
-                    //throw;
+                    MessageBox.Show("Sorry, no info available on this film.");
                 }
             }
             else
             {
-                MessageBox.Show("Sorry, no info available on this film.");
+                MessageBox.Show("Please enter a title first");
             }
         }
     }

@@ -61,8 +61,12 @@ namespace VideoRentalSystem.Forms
         private void btnAddMovie_Click(object sender, EventArgs e)
         {
             Form addMovie = new FormAddMovie();
-            addMovie.ShowDialog();
-            MessageBox.Show("Movie Added");
+            if (addMovie.ShowDialog() == DialogResult.OK)
+            {
+                MessageBox.Show("Movie Added");
+            }
+            
+            
             LoadTables();
         }
 
@@ -138,7 +142,6 @@ namespace VideoRentalSystem.Forms
                 catch (Exception)
                 {
 
-                    //throw;
                 }
 
             }
@@ -169,6 +172,48 @@ namespace VideoRentalSystem.Forms
         private void btnBack_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnEditCust_Click(object sender, EventArgs e)
+        {
+            string fName = dgvUsers.SelectedRows[0].Cells[1].Value.ToString();
+            string lName = dgvUsers.SelectedRows[0].Cells[2].Value.ToString();
+            string addr = dgvUsers.SelectedRows[0].Cells[3].Value.ToString();
+            string phone = dgvUsers.SelectedRows[0].Cells[4].Value.ToString();
+            int ID = Convert.ToInt32(dgvUsers.SelectedRows[0].Cells[0].Value);
+            using (var editCust = new FormEditCust(fName, lName, addr, phone, ID))
+            {
+                if (editCust.ShowDialog() == DialogResult.OK)
+                {
+                    fName = editCust.fN;
+                    lName = editCust.lN;
+                    addr = editCust.address;
+                    phone = editCust.phone;
+
+                    var myData = new Data();
+                    myData.EditCust(fName, lName, addr, phone, ID);
+                    MessageBox.Show("Customer Updated");
+                    LoadTables();
+                }
+            }
+
+            ;
+            LoadTables();
+        }
+
+        private void btnNewRental_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnReturn_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnViewToggle_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
