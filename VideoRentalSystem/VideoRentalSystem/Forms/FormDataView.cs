@@ -7,6 +7,11 @@ namespace VideoRentalSystem.Forms
 {
     public partial class FormDataView : FormTemplate
     {
+        private Data myData;
+        private int selectedCust;
+        private int selectedMovie;
+        private bool allRentals = true;
+
         public FormDataView()
         {
             InitializeComponent();
@@ -15,6 +20,7 @@ namespace VideoRentalSystem.Forms
         private void FormDataView_Load(object sender, EventArgs e)
         {
             LoadTables();
+            myData = new Data();
         }
 
         public void LoadTables()
@@ -22,14 +28,16 @@ namespace VideoRentalSystem.Forms
             var myData = new Data();
             dgvMovies.DataSource = myData.GetTable("MovieID, title, year, rating, genre", "movies");
             dgvUsers.DataSource = myData.GetTable("*", "customer");
-            dgvRentals.DataSource = myData.GetTable("*", "rentedmovies");
+            dgvRentals.DataSource = myData.GetTable("*", "RentalsFriendly");
         }
 
         private void dgvMovies_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            var myData = new Data();
+            //var myData = new Data();
             String myTitle = dgvMovies.Rows[e.RowIndex].Cells[1].Value.ToString();
             Movie myMovie = myData.GetJson(myTitle);
+            selectedMovie = Convert.ToInt32(dgvMovies.Rows[e.RowIndex].Cells[0].Value);
+            lblSMovie.Text = myTitle;
             //show Movie object
             try
             {
@@ -46,7 +54,7 @@ namespace VideoRentalSystem.Forms
 
         private void btnRemoveMovie_Click(object sender, EventArgs e)
         {
-            var myData = new Data();
+            //var myData = new Data();
             try
             {
                 myData.DeleteRecord("Movies", Convert.ToInt32(dgvMovies.SelectedRows[0].Cells[0].Value));
@@ -99,7 +107,7 @@ namespace VideoRentalSystem.Forms
                     address = addCust.address;
                     phone = addCust.phone;
 
-                    var myData = new Data();
+                    //var myData = new Data();
                     myData.AddCustomer(fN, lN, address, phone);
                     MessageBox.Show("Customer Added");
                     LoadTables();
@@ -109,7 +117,7 @@ namespace VideoRentalSystem.Forms
 
         private void btnRemoveCust_Click(object sender, EventArgs e)
         {
-            var myData = new Data();
+            //var myData = new Data();
             try
             {
                 myData.DeleteRecord("Customer", Convert.ToInt32(dgvUsers.SelectedRows[0].Cells[0].Value));
@@ -124,7 +132,7 @@ namespace VideoRentalSystem.Forms
 
         private void updateDatabase()
         {
-            var myData = new Data();
+            //var myData = new Data();
             foreach (DataGridViewRow row in dgvMovies.Rows)
             {
                 try
@@ -162,7 +170,7 @@ namespace VideoRentalSystem.Forms
 
         private void btnReturn_Click(object sender, EventArgs e)
         {
-            var myData = new Data();
+            //var myData = new Data();
             int ID = Convert.ToInt32(dgvRentals.SelectedRows[0].Cells[0].Value);
             myData.ReturnRental(ID);
             LoadTables();
@@ -190,7 +198,7 @@ namespace VideoRentalSystem.Forms
                     addr = editCust.address;
                     phone = editCust.phone;
 
-                    var myData = new Data();
+                    //var myData = new Data();
                     myData.EditCust(fName, lName, addr, phone, ID);
                     MessageBox.Show("Customer Updated");
                     LoadTables();
@@ -203,17 +211,54 @@ namespace VideoRentalSystem.Forms
 
         private void btnNewRental_Click(object sender, EventArgs e)
         {
-
+            if (lblSCust.Text != "none" && lblSMovie.Text != "none")
+            {
+                try
+                {
+                    myData.addRental(selectedMovie, selectedCust);
+                    MessageBox.Show("New rental added.");
+                    LoadTables();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Something went wrong, make sure you have selected a movie and a customer.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Something went wrong, make sure you have selected a movie and a customer.");
+            }
         }
 
         private void btnReturn_Click_1(object sender, EventArgs e)
         {
-
+            myData.ReturnRental(Convert.ToInt32(dgvRentals.SelectedRows[0].Cells[0].Value));
+            LoadTables();
         }
 
         private void btnViewToggle_Click(object sender, EventArgs e)
         {
+            if (allRentals)
+            {
+                dgvRentals.DataSource = myData.NotReturned();
+                btnViewToggle.Text = "Show all Rentals";
+                allRentals = false;
+            }
+            else
+            {
+                LoadTables();
+                btnViewToggle.Text = "Show unreturned Rentals";
+                allRentals = true;
+            }
+        }
 
+        private void dgvUsers_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string f = dgvUsers.Rows[e.RowIndex].Cells[1].Value.ToString();
+            string l = dgvUsers.Rows[e.RowIndex].Cells[2].Value.ToString();
+            selectedCust = Convert.ToInt32(dgvUsers.Rows[e.RowIndex].Cells[0].Value);
+            lblSCust.Text = string.Format("{0} {1}", f, l)
+            ;
         }
     }
 }

@@ -46,6 +46,10 @@
             this.btnAddCust = new System.Windows.Forms.Button();
             this.dgvUsers = new System.Windows.Forms.DataGridView();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.lblSMovie = new System.Windows.Forms.Label();
+            this.lblMovie = new System.Windows.Forms.Label();
+            this.lblSCust = new System.Windows.Forms.Label();
+            this.lblCust = new System.Windows.Forms.Label();
             this.btnViewToggle = new System.Windows.Forms.Button();
             this.btnReturn = new System.Windows.Forms.Button();
             this.btnNewRental = new System.Windows.Forms.Button();
@@ -181,6 +185,7 @@
             this.dgvMovies.AllowUserToResizeRows = false;
             this.dgvMovies.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvMovies.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMovies.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dgvMovies.Location = new System.Drawing.Point(6, 6);
             this.dgvMovies.MultiSelect = false;
             this.dgvMovies.Name = "dgvMovies";
@@ -238,18 +243,26 @@
             // dgvUsers
             // 
             this.dgvUsers.AllowUserToAddRows = false;
+            this.dgvUsers.AllowUserToDeleteRows = false;
             this.dgvUsers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvUsers.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dgvUsers.Location = new System.Drawing.Point(6, 6);
             this.dgvUsers.MultiSelect = false;
             this.dgvUsers.Name = "dgvUsers";
+            this.dgvUsers.ReadOnly = true;
             this.dgvUsers.RowHeadersVisible = false;
             this.dgvUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvUsers.Size = new System.Drawing.Size(1063, 609);
             this.dgvUsers.TabIndex = 1;
+            this.dgvUsers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsers_CellClick);
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.lblSMovie);
+            this.tabPage3.Controls.Add(this.lblMovie);
+            this.tabPage3.Controls.Add(this.lblSCust);
+            this.tabPage3.Controls.Add(this.lblCust);
             this.tabPage3.Controls.Add(this.btnViewToggle);
             this.tabPage3.Controls.Add(this.btnReturn);
             this.tabPage3.Controls.Add(this.btnNewRental);
@@ -262,13 +275,49 @@
             this.tabPage3.Text = "Rentals";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // lblSMovie
+            // 
+            this.lblSMovie.AutoSize = true;
+            this.lblSMovie.Location = new System.Drawing.Point(863, 631);
+            this.lblSMovie.Name = "lblSMovie";
+            this.lblSMovie.Size = new System.Drawing.Size(31, 13);
+            this.lblSMovie.TabIndex = 14;
+            this.lblSMovie.Text = "none";
+            // 
+            // lblMovie
+            // 
+            this.lblMovie.AutoSize = true;
+            this.lblMovie.Location = new System.Drawing.Point(773, 631);
+            this.lblMovie.Name = "lblMovie";
+            this.lblMovie.Size = new System.Drawing.Size(84, 13);
+            this.lblMovie.TabIndex = 13;
+            this.lblMovie.Text = "Selected Movie:";
+            // 
+            // lblSCust
+            // 
+            this.lblSCust.AutoSize = true;
+            this.lblSCust.Location = new System.Drawing.Point(633, 631);
+            this.lblSCust.Name = "lblSCust";
+            this.lblSCust.Size = new System.Drawing.Size(31, 13);
+            this.lblSCust.TabIndex = 12;
+            this.lblSCust.Text = "none";
+            // 
+            // lblCust
+            // 
+            this.lblCust.AutoSize = true;
+            this.lblCust.Location = new System.Drawing.Point(528, 631);
+            this.lblCust.Name = "lblCust";
+            this.lblCust.Size = new System.Drawing.Size(99, 13);
+            this.lblCust.TabIndex = 11;
+            this.lblCust.Text = "Selected Customer:";
+            // 
             // btnViewToggle
             // 
             this.btnViewToggle.Location = new System.Drawing.Point(354, 621);
             this.btnViewToggle.Name = "btnViewToggle";
             this.btnViewToggle.Size = new System.Drawing.Size(168, 23);
             this.btnViewToggle.TabIndex = 10;
-            this.btnViewToggle.Text = "View Overdue Movies";
+            this.btnViewToggle.Text = "Show unreturned Rentals";
             this.btnViewToggle.UseVisualStyleBackColor = true;
             this.btnViewToggle.Click += new System.EventHandler(this.btnViewToggle_Click);
             // 
@@ -297,9 +346,11 @@
             this.dgvRentals.AllowUserToAddRows = false;
             this.dgvRentals.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvRentals.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvRentals.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dgvRentals.Location = new System.Drawing.Point(6, 6);
             this.dgvRentals.MultiSelect = false;
             this.dgvRentals.Name = "dgvRentals";
+            this.dgvRentals.ReadOnly = true;
             this.dgvRentals.RowHeadersVisible = false;
             this.dgvRentals.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvRentals.Size = new System.Drawing.Size(1063, 609);
@@ -338,6 +389,7 @@
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).EndInit();
             this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRentals)).EndInit();
             this.ResumeLayout(false);
 
@@ -368,5 +420,9 @@
         private System.Windows.Forms.Label lblPlot;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Label lblSMovie;
+        private System.Windows.Forms.Label lblMovie;
+        private System.Windows.Forms.Label lblSCust;
+        private System.Windows.Forms.Label lblCust;
     }
 }
