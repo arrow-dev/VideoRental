@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace VideoRentalSystem.Forms
 {
+    //Form to edit customer info.
     public partial class FormEditCust : Form
     {
         public string fN { get; set; }

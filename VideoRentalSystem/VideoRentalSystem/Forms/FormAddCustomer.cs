@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace VideoStore
 {
+    //This is a dialog form to pass data back to the main program.
     public partial class FormAddCustomer : Form
     {
         public string fN { get; set; }

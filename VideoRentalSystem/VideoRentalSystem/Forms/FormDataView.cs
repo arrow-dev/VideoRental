@@ -8,9 +8,9 @@ namespace VideoRentalSystem.Forms
     public partial class FormDataView : FormTemplate
     {
         private Data myData;
-        private int selectedCust;
-        private int selectedMovie;
-        private bool allRentals = true;
+        private int selectedCust; //Keeps track of which customer has been selected
+        private int selectedMovie; //Keeps track of which movie has been selected
+        private bool allRentals = true; //Used for toggling the view in rentals.
         private Movie myMovie;
 
         public FormDataView()
@@ -18,12 +18,14 @@ namespace VideoRentalSystem.Forms
             InitializeComponent();
         }
 
+        //On form load initialize the data class after populating datagrid views.
         private void FormDataView_Load(object sender, EventArgs e)
         {
             LoadTables();
             myData = new Data();
         }
 
+        //Populates datagrid views, used at start up and to refresh after changes have been made to data.
         public void LoadTables()
         {
             var myData = new Data();
@@ -32,14 +34,13 @@ namespace VideoRentalSystem.Forms
             dgvRentals.DataSource = myData.GetTable("*", "RentalsFriendly");
         }
 
+        //Selects a movie and displays data for that movie.
         private void dgvMovies_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            //var myData = new Data();
             String myTitle = dgvMovies.Rows[e.RowIndex].Cells[1].Value.ToString();
             myMovie = myData.GetJson(myTitle);
             selectedMovie = Convert.ToInt32(dgvMovies.Rows[e.RowIndex].Cells[0].Value);
             lblSMovie.Text = myTitle;
-            //show Movie object
             try
             {
                 pbxPoster.LoadAsync(myMovie.Poster);
@@ -49,13 +50,13 @@ namespace VideoRentalSystem.Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Something went wrong! " + ex.Message);
             }
         }
 
+        //Deletes a selected movie from the database.
         private void btnRemoveMovie_Click(object sender, EventArgs e)
         {
-            //var myData = new Data();
             try
             {
                 myData.DeleteRecord("Movies", Convert.ToInt32(dgvMovies.SelectedRows[0].Cells[0].Value));
@@ -63,10 +64,11 @@ namespace VideoRentalSystem.Forms
             }
             catch (Exception)
             {
-
+                MessageBox.Show("Make sure you have selected a movie to delete!");
             }
         }
 
+        //Opens add movie form.
         private void btnAddMovie_Click(object sender, EventArgs e)
         {
             Form addMovie = new FormAddMovie();
@@ -79,6 +81,7 @@ namespace VideoRentalSystem.Forms
             LoadTables();
         }
 
+        //Selected movie info is sent to the edit movie form where the user can edit the data and update the database.
         private void btnEditMovie_Click(object sender, EventArgs e)
         {
             string Title = dgvMovies.SelectedRows[0].Cells[1].Value.ToString();
@@ -93,6 +96,7 @@ namespace VideoRentalSystem.Forms
             LoadTables();
         }
 
+        //Adds a user using a seperate form for data entry.
         private void btnAddUser_Click(object sender, EventArgs e)
         {
             string fN;
@@ -108,8 +112,7 @@ namespace VideoRentalSystem.Forms
                     lN = addCust.lN;
                     address = addCust.address;
                     phone = addCust.phone;
-
-                    //var myData = new Data();
+                    
                     myData.AddCustomer(fN, lN, address, phone);
                     MessageBox.Show("Customer Added");
                     LoadTables();
@@ -117,9 +120,9 @@ namespace VideoRentalSystem.Forms
             }
         }
 
+        //Removes selected customer from database.
         private void btnRemoveCust_Click(object sender, EventArgs e)
         {
-            //var myData = new Data();
             try
             {
                 myData.DeleteRecord("Customer", Convert.ToInt32(dgvUsers.SelectedRows[0].Cells[0].Value));
@@ -128,13 +131,13 @@ namespace VideoRentalSystem.Forms
             }
             catch (Exception)
             {
-
+                MessageBox.Show("Make sure you have selected a customer!");
             }
         }
 
+        //This method goes through every movie in the database and syncs the data with the OMDB database.
         private void updateDatabase()
         {
-            //var myData = new Data();
             foreach (DataGridViewRow row in dgvMovies.Rows)
             {
                 try
@@ -149,9 +152,9 @@ namespace VideoRentalSystem.Forms
                     }
 
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-
+                    MessageBox.Show(ex.Message);
                 }
 
             }
@@ -163,16 +166,9 @@ namespace VideoRentalSystem.Forms
             updateDatabase();
         }
 
-        //private void btnNewRental_Click(object sender, EventArgs e)
-        //{
-        //    var myData = new Data();
-        //    myData.addRental(Convert.ToInt32(textBox1.Text), Convert.ToInt32(textBox2.Text));
-        //    LoadTables();
-        //}
-
+        //Gets selected rental id and sends it to the ReturnRental method.
         private void btnReturn_Click(object sender, EventArgs e)
         {
-            //var myData = new Data();
             int ID = Convert.ToInt32(dgvRentals.SelectedRows[0].Cells[0].Value);
             myData.ReturnRental(ID);
             LoadTables();
@@ -184,6 +180,7 @@ namespace VideoRentalSystem.Forms
             this.DialogResult = DialogResult.OK;
         }
 
+        //Edit a customer using a separate form.
         private void btnEditCust_Click(object sender, EventArgs e)
         {
             string fName = dgvUsers.SelectedRows[0].Cells[1].Value.ToString();
@@ -199,18 +196,16 @@ namespace VideoRentalSystem.Forms
                     lName = editCust.lN;
                     addr = editCust.address;
                     phone = editCust.phone;
-
-                    //var myData = new Data();
+                    
                     myData.EditCust(fName, lName, addr, phone, ID);
                     MessageBox.Show("Customer Updated");
                     LoadTables();
                 }
             }
-
-            ;
             LoadTables();
         }
 
+        //Adds a new rental using selected movie, customer and a the current system datetime and displays a message with the price to charge the customer.
         private void btnNewRental_Click(object sender, EventArgs e)
         {
             if (lblSCust.Text != "none" && lblSMovie.Text != "none")
@@ -238,12 +233,7 @@ namespace VideoRentalSystem.Forms
             }
         }
 
-        private void btnReturn_Click_1(object sender, EventArgs e)
-        {
-            myData.ReturnRental(Convert.ToInt32(dgvRentals.SelectedRows[0].Cells[0].Value));
-            LoadTables();
-        }
-
+        //Toggles the datasource for the datagrid view.
         private void btnViewToggle_Click(object sender, EventArgs e)
         {
             if (allRentals)
@@ -260,21 +250,23 @@ namespace VideoRentalSystem.Forms
             }
         }
 
+        //Updates labels on rental page when a user is selected.
         private void dgvUsers_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            string f = dgvUsers.Rows[e.RowIndex].Cells[1].Value.ToString();
-            string l = dgvUsers.Rows[e.RowIndex].Cells[2].Value.ToString();
+            var f = dgvUsers.Rows[e.RowIndex].Cells[1].Value.ToString();
+            var l = dgvUsers.Rows[e.RowIndex].Cells[2].Value.ToString();
             selectedCust = Convert.ToInt32(dgvUsers.Rows[e.RowIndex].Cells[0].Value);
-            lblSCust.Text = string.Format("{0} {1}", f, l)
-            ;
+            lblSCust.Text = string.Format("{0} {1}", f, l);
         }
 
+        //Opens stat form passing in a datatable filled from a view.
         private void btnTopMovie_Click(object sender, EventArgs e)
         {
             var StatForm = new FormStats(myData.GetTable("*", "RentalsPerMovie"));
             StatForm.ShowDialog();
         }
 
+        //Opens stat form passing in a datatable filled from a view.
         private void btnTopCust_Click(object sender, EventArgs e)
         {
             var StatForm = new FormStats(myData.GetTable("*", "RentalsPerCust"));

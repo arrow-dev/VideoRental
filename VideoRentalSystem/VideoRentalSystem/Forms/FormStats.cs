@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace VideoRentalSystem.Forms
 {
+    //Displays whatever datatable is passed in to the constructor.
     public partial class FormStats : Form
     {
         public FormStats(DataTable dt)

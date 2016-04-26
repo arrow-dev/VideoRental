@@ -11,6 +11,7 @@ using VideoRentalSystem.Class;
 
 namespace VideoStore
 {
+    //Form to add a new movie to database.
     public partial class FormAddMovie : Form
     {
         
@@ -26,6 +27,7 @@ namespace VideoStore
             this.DialogResult = DialogResult.OK;
         }
 
+        //This allows a user to search for movie info and pre fill the form.
         private void button1_Click(object sender, EventArgs e)
         {
             var myData = new Data();

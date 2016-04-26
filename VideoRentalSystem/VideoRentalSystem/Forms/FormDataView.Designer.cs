@@ -331,7 +331,7 @@
             this.btnReturn.TabIndex = 9;
             this.btnReturn.Text = "Return Movie";
             this.btnReturn.UseVisualStyleBackColor = true;
-            this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click_1);
+            this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             // 
             // btnNewRental
             // 

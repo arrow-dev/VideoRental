@@ -17,6 +17,8 @@ namespace VideoRentalSystem.Class
         private SqlDataAdapter da;
         private String ConnectionString;
 
+
+        //Constructor initializes connection string to database
         public Data()
         {
             ConnectionString = @"Data Source=DESKTOP-OLS6GQ1\SQLEXPRESS;Initial Catalog=VBMoviesFullData;Integrated Security=True";
@@ -24,6 +26,7 @@ namespace VideoRentalSystem.Class
             Command.Connection = Connection;
         }
 
+        //This method returns a data table. Used for populating datagrid views.
         public DataTable GetTable(string columns, string tablename)
         {
             DataTable dt = new DataTable();
@@ -36,6 +39,7 @@ namespace VideoRentalSystem.Class
             return dt;
         }
 
+        //This method queries the omdb api with a movie title and deserializes the resulting json string to a C# object.
         public Movie GetJson(string title)
         {
             Movie movie;
@@ -47,6 +51,7 @@ namespace VideoRentalSystem.Class
             return movie;
         }
 
+        //Adds a movie to the database via stored proceedure.
         public void AddMovie(string p1, string p2, string p3, string p4, string p5)
         {
             using (SqlCommand cmd = Connection.CreateCommand())
@@ -65,6 +70,7 @@ namespace VideoRentalSystem.Class
             }
         }
 
+        //Adds a customer to the database via stored proceedure.
         public void AddCustomer(string p1, string p2, string p3, string p4)
         {
             using (SqlCommand cmd = Connection.CreateCommand())
@@ -82,6 +88,7 @@ namespace VideoRentalSystem.Class
             }
         }
 
+        //Updates a movie in database via stored proceedure.
         public void EditMovie(string p1, string p2, string p3, string p4, string p5, int ID)
         {
             using (SqlCommand cmd = Connection.CreateCommand())
@@ -100,6 +107,8 @@ namespace VideoRentalSystem.Class
 
             }
         }
+
+        //Updates a customer in database via stored proceedure.
         public void EditCust(string p1, string p2, string p3, string p4, int ID)
         {
             using (SqlCommand cmd = Connection.CreateCommand())
@@ -118,6 +127,7 @@ namespace VideoRentalSystem.Class
             }
         }
 
+        //Deletes a record from the database via direct sql command.
         public void DeleteRecord(string table, int index)
         {
             string pk = "";
@@ -151,6 +161,7 @@ namespace VideoRentalSystem.Class
             Connection.Close();
         }
 
+        //Adds a rental to the database via stored proceedure.
         public void addRental(int mID, int cID)
         {
             using (SqlCommand cmd = Connection.CreateCommand())
@@ -167,6 +178,7 @@ namespace VideoRentalSystem.Class
             }
         }
 
+        //Updates a rental return date via stored proceedure.
         public void ReturnRental(int id)
         {
             using (SqlCommand cmd = Connection.CreateCommand())

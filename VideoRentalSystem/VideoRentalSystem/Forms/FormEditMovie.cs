@@ -11,6 +11,7 @@ using VideoRentalSystem.Class;
 
 namespace VideoStore
 {
+    //Form to edit movie info.
     public partial class FormEditMovie : Form
     {
         private int ID;

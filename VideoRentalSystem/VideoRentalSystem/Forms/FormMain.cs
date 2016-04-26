@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace VideoRentalSystem.Forms
 {
+    //Startup menu
     public partial class FormMain : FormTemplate
     {
         public FormMain()

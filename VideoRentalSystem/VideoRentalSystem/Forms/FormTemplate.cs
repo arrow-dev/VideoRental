@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace VideoRentalSystem
 {
+    //Template that other forms can inherit from to keep basic form properties consistant across the application.
     public partial class FormTemplate : Form
     {
         public FormTemplate()
