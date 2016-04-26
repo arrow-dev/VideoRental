@@ -55,6 +55,8 @@
             this.btnNewRental = new System.Windows.Forms.Button();
             this.dgvRentals = new System.Windows.Forms.DataGridView();
             this.btnBack = new System.Windows.Forms.Button();
+            this.btnTopMovie = new System.Windows.Forms.Button();
+            this.btnTopCust = new System.Windows.Forms.Button();
             this.tcDataDisplay.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panelMovie.SuspendLayout();
@@ -367,11 +369,35 @@
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
+            // btnTopMovie
+            // 
+            this.btnTopMovie.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTopMovie.Location = new System.Drawing.Point(1101, 436);
+            this.btnTopMovie.Name = "btnTopMovie";
+            this.btnTopMovie.Size = new System.Drawing.Size(187, 80);
+            this.btnTopMovie.TabIndex = 9;
+            this.btnTopMovie.Text = "View Top 5 Movies";
+            this.btnTopMovie.UseVisualStyleBackColor = true;
+            this.btnTopMovie.Click += new System.EventHandler(this.btnTopMovie_Click);
+            // 
+            // btnTopCust
+            // 
+            this.btnTopCust.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTopCust.Location = new System.Drawing.Point(1101, 522);
+            this.btnTopCust.Name = "btnTopCust";
+            this.btnTopCust.Size = new System.Drawing.Size(187, 80);
+            this.btnTopCust.TabIndex = 10;
+            this.btnTopCust.Text = "View Top 5 Customers";
+            this.btnTopCust.UseVisualStyleBackColor = true;
+            this.btnTopCust.Click += new System.EventHandler(this.btnTopCust_Click);
+            // 
             // FormDataView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1300, 700);
+            this.Controls.Add(this.btnTopCust);
+            this.Controls.Add(this.btnTopMovie);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.tcDataDisplay);
             this.Name = "FormDataView";
@@ -424,5 +450,7 @@
         private System.Windows.Forms.Label lblMovie;
         private System.Windows.Forms.Label lblSCust;
         private System.Windows.Forms.Label lblCust;
+        private System.Windows.Forms.Button btnTopMovie;
+        private System.Windows.Forms.Button btnTopCust;
     }
 }

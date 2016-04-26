@@ -36,18 +36,6 @@ namespace VideoRentalSystem.Class
             return dt;
         }
 
-        public DataTable NotReturned()
-        {
-            DataTable dt = new DataTable();
-            using (da = new SqlDataAdapter("SELECT * FROM RentalsFriendlyNotReturned", Connection))
-            {
-                Connection.Open();
-                da.Fill(dt);
-                Connection.Close();
-            }
-            return dt;
-        }
-
         public Movie GetJson(string title)
         {
             Movie movie;

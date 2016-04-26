@@ -11,6 +11,7 @@ namespace VideoRentalSystem.Forms
         private int selectedCust;
         private int selectedMovie;
         private bool allRentals = true;
+        private Movie myMovie;
 
         public FormDataView()
         {
@@ -26,7 +27,7 @@ namespace VideoRentalSystem.Forms
         public void LoadTables()
         {
             var myData = new Data();
-            dgvMovies.DataSource = myData.GetTable("MovieID, title, year, rating, genre", "movies");
+            dgvMovies.DataSource = myData.GetTable("MovieID, title, year, rating, genre, plot", "movies");
             dgvUsers.DataSource = myData.GetTable("*", "customer");
             dgvRentals.DataSource = myData.GetTable("*", "RentalsFriendly");
         }
@@ -35,7 +36,7 @@ namespace VideoRentalSystem.Forms
         {
             //var myData = new Data();
             String myTitle = dgvMovies.Rows[e.RowIndex].Cells[1].Value.ToString();
-            Movie myMovie = myData.GetJson(myTitle);
+            myMovie = myData.GetJson(myTitle);
             selectedMovie = Convert.ToInt32(dgvMovies.Rows[e.RowIndex].Cells[0].Value);
             lblSMovie.Text = myTitle;
             //show Movie object
@@ -84,9 +85,10 @@ namespace VideoRentalSystem.Forms
             string Genre = dgvMovies.SelectedRows[0].Cells[4].Value.ToString();
             string Rating = dgvMovies.SelectedRows[0].Cells[3].Value.ToString();
             string Year = dgvMovies.SelectedRows[0].Cells[2].Value.ToString();
+            string Plot = dgvMovies.SelectedRows[0].Cells[5].Value.ToString();
             int ID = Convert.ToInt32(dgvMovies.SelectedRows[0].Cells[0].Value);
 
-            Form editMovie = new FormEditMovie(Title, Year, Genre, Rating, ID);
+            Form editMovie = new FormEditMovie(Title, Year, Genre, Rating, Plot, ID);
             editMovie.ShowDialog();
             LoadTables();
         }
@@ -139,7 +141,7 @@ namespace VideoRentalSystem.Forms
                 {
                     string title = row.Cells[1].Value.ToString();
                     int id = Convert.ToInt32(row.Cells[0].Value);
-                    var myMovie = myData.GetJson(title);
+                    myMovie = myData.GetJson(title);
                     if (myMovie.Title != null)
                     {
                         myData.EditMovie(myMovie.Title, myMovie.Plot, myMovie.Year, myMovie.Rated, myMovie.Genre, id);
@@ -215,8 +217,14 @@ namespace VideoRentalSystem.Forms
             {
                 try
                 {
+                    int price = 5;
+                    DateTime date = Convert.ToDateTime("1/1/"+ myMovie.Year);
                     myData.addRental(selectedMovie, selectedCust);
-                    MessageBox.Show("New rental added.");
+                    if (date.Year < (DateTime.Now.Year - 5))
+                    {
+                        price = 2;
+                    }
+                    MessageBox.Show("New rental added, price is $" + price);
                     LoadTables();
                 }
                 catch (Exception)
@@ -240,7 +248,7 @@ namespace VideoRentalSystem.Forms
         {
             if (allRentals)
             {
-                dgvRentals.DataSource = myData.NotReturned();
+                dgvRentals.DataSource = myData.GetTable("*", "RentalsFriendlyNotReturned");
                 btnViewToggle.Text = "Show all Rentals";
                 allRentals = false;
             }
@@ -259,6 +267,18 @@ namespace VideoRentalSystem.Forms
             selectedCust = Convert.ToInt32(dgvUsers.Rows[e.RowIndex].Cells[0].Value);
             lblSCust.Text = string.Format("{0} {1}", f, l)
             ;
+        }
+
+        private void btnTopMovie_Click(object sender, EventArgs e)
+        {
+            var StatForm = new FormStats(myData.GetTable("*", "RentalsPerMovie"));
+            StatForm.ShowDialog();
+        }
+
+        private void btnTopCust_Click(object sender, EventArgs e)
+        {
+            var StatForm = new FormStats(myData.GetTable("*", "RentalsPerCust"));
+            StatForm.ShowDialog();
         }
     }
 }

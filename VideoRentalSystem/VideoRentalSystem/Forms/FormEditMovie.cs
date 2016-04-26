@@ -14,13 +14,14 @@ namespace VideoStore
     public partial class FormEditMovie : Form
     {
         private int ID;
-        public FormEditMovie(string Title, string Year, string Genre, string Rating, int ID)
+        public FormEditMovie(string Title, string Year, string Genre, string Rating, string plot, int ID)
         {
             InitializeComponent();
     
             txtTitle.Text = Title;
             cmbxGenre.Text = Genre;
             cmbxRating.Text = Rating;
+            txtPlot.Text = plot;
             this.ID = ID;
             try
             {

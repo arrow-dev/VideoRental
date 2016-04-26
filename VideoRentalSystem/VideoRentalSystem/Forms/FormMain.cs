@@ -26,7 +26,9 @@ namespace VideoRentalSystem.Forms
         private void btnStart_Click(object sender, EventArgs e)
         {
             var DataView = new FormDataView();
+            this.Hide();
             DataView.ShowDialog();
+            this.Show();
         }
     }
 }
