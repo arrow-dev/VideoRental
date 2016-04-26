@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace VideoRentalSystem.Class
 {
-    class Data
+    public class Data
     {
         private SqlConnection Connection = new SqlConnection();
         private SqlCommand Command = new SqlCommand();

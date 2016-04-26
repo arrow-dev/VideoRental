@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace VideoRentalSystem.Class
 {
 //Class to deserialize json to.
-    class Movie
+    public class Movie
     {
         public string Title { get; set; }
         public string Year { get; set; }
