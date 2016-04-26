@@ -33,6 +33,10 @@ namespace VideoStore
                 phone = txtPhone.Text;
                 this.DialogResult = DialogResult.OK;
             }
+            else
+            {
+                MessageBox.Show("Please complete all fields.");
+            }
         }
     }
 }

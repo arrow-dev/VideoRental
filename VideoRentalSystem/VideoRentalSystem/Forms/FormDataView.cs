@@ -62,9 +62,9 @@ namespace VideoRentalSystem.Forms
                 myData.DeleteRecord("Movies", Convert.ToInt32(dgvMovies.SelectedRows[0].Cells[0].Value));
                 LoadTables();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Make sure you have selected a movie to delete!");
+                MessageBox.Show("Make sure you have selected a movie to delete! " + ex.Message);
             }
         }
 
@@ -215,7 +215,7 @@ namespace VideoRentalSystem.Forms
                     int price = 5;
                     DateTime date = Convert.ToDateTime("1/1/"+ myMovie.Year);
                     myData.addRental(selectedMovie, selectedCust);
-                    if (date.Year < (DateTime.Now.Year - 5))
+                    if (date.Year <= (DateTime.Now.Year - 5))
                     {
                         price = 2;
                     }

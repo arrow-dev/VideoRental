@@ -180,6 +180,7 @@
             this.Controls.Add(this.lblRating);
             this.Controls.Add(this.lblTitle);
             this.Name = "FormAddMovie";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormAddMovie";
             this.ResumeLayout(false);
             this.PerformLayout();

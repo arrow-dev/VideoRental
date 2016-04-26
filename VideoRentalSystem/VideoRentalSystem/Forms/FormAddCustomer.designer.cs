@@ -128,6 +128,7 @@
             this.Controls.Add(this.lblLN);
             this.Controls.Add(this.lblFN);
             this.Name = "FormAddCustomer";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormAddCustomer";
             this.ResumeLayout(false);
             this.PerformLayout();

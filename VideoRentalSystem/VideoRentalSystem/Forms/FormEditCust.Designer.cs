@@ -128,6 +128,7 @@
             this.Controls.Add(this.lblLN);
             this.Controls.Add(this.lblFN);
             this.Name = "FormEditCust";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormEditCust";
             this.ResumeLayout(false);
             this.PerformLayout();
